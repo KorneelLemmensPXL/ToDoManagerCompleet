@@ -8,12 +8,12 @@ namespace ToDoManger.Application.Services
 {
     public class ToDoService
     {
-        private readonly TodoJsonRepository _repository;
+        private readonly TodoCSVRepository _repository;
         private readonly FileLogger _logger;
 
-        public ToDoService()
+        public ToDoService(string path)
         {
-            _repository = new TodoJsonRepository();
+            _repository = new TodoCSVRepository(path);
             _logger = new FileLogger();
         }
 

@@ -10,7 +10,7 @@ namespace ToDoManager.Infrastructure.Repositories
     {
         const string filename = "todos.json";
 
-        JsonSerializerOptions options = new JsonSerializerOptions
+        readonly JsonSerializerOptions options = new JsonSerializerOptions
         {
             WriteIndented = true
         };

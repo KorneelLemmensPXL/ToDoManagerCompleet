@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -20,10 +21,30 @@ namespace ToDoManager.WPF
     public partial class TodoListWindow : Window
     {
         private readonly ToDoService _todoService;
+
+
         public TodoListWindow()
         {
             InitializeComponent();
-            _todoService = new ToDoService();
+
+            
+            string filePath;
+
+            
+            
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Filter = "CSV files(*.csv) | *.csv";
+            dialog.FileName = "Todo.csv";
+            filePath = dialog.DefaultExt = "Todo.csv";
+            if (dialog.ShowDialog() == true)
+            {
+                    filePath = dialog.FileName;
+            }
+            
+
+            
+
+            _todoService = new ToDoService(filePath);
             RefreshTodos();
             
         }
