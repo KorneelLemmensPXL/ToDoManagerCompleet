@@ -1,0 +1,71 @@
+﻿<Window x:Class="ToDoManager.WPF.TodoListWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="TodoManager"
+        Height="520"
+        Width="900"
+        WindowStartupLocation="CenterScreen">
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="3*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- LEFT: LIST -->
+        <GroupBox Header="Todos" Grid.Column="0" Grid.Row="0" Margin="0,0,10,10">
+            <Grid Margin="10">
+                <ListBox x:Name="todosListBox"
+                         SelectionChanged="TodosListBox_SelectionChanged" />
+            </Grid>
+        </GroupBox>
+
+        <!-- RIGHT: DETAILS -->
+        <GroupBox Header="Details" Grid.Column="1" Grid.Row="0" Margin="0,0,0,10">
+            <Grid Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="140"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="Title:" FontWeight="Bold" Margin="0,0,10,10" VerticalAlignment="Center"/>
+                <TextBlock x:Name="titleTextBlock" Grid.Row="0" Grid.Column="1" Margin="0,0,0,10" VerticalAlignment="Center"/>
+
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="Due date:" FontWeight="Bold" Margin="0,0,10,10" VerticalAlignment="Center"/>
+                <TextBlock x:Name="dueDateTextBlock" Grid.Row="1" Grid.Column="1" Margin="0,0,0,10" VerticalAlignment="Center"/>
+
+                <TextBlock Grid.Row="2" Grid.Column="0" Text="Completed:" FontWeight="Bold" Margin="0,0,10,10" VerticalAlignment="Center"/>
+                <TextBlock x:Name="completedTextBlock" Grid.Row="2" Grid.Column="1" Margin="0,0,0,10" VerticalAlignment="Center"/>
+
+                <TextBlock Grid.Row="3" Grid.Column="0" Text="Completed at:" FontWeight="Bold" Margin="0,0,10,10" VerticalAlignment="Center"/>
+                <TextBlock x:Name="completedAtTextBlock" Grid.Row="3" Grid.Column="1" Margin="0,0,0,10" VerticalAlignment="Center"/>
+
+                <TextBlock Grid.Row="4" Grid.Column="0"
+                           Text="Description:" FontWeight="Bold"
+                           Margin="0,0,10,0" VerticalAlignment="Top"/>
+                <TextBlock x:Name="descriptionTextBlock"
+                         Grid.Row="4" Grid.Column="1"
+                         TextWrapping="Wrap"/>
+            </Grid>
+        </GroupBox>
+
+        <!-- BOTTOM BUTTONS -->
+        <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2"
+                    Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button x:Name="addButton" Content="Add" Width="110" Margin="0,0,10,0" Padding="5" Click="AddButton_Click"/>
+            <Button x:Name="completeButton" Content="Complete" Width="110" Margin="0,0,10,0" Padding="5" Click="CompleteButton_Click"/>
+            <Button x:Name="deleteButton" Content="Delete" Width="110" Margin="0,0,10,0" Padding="5" Click="DeleteButton_Click"/>
+            <Button x:Name="refreshButton" Content="Refresh" Width="110" Padding="5" Click="RefreshButton_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
